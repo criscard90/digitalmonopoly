@@ -363,6 +363,12 @@ endTurnBtn.addEventListener('click', () => {
 
 // UI update functions
 function updateUI() {
+    if (game.players.length === 0) {
+        currentPlayerSpan.textContent = `Giocatore corrente: Nessuno`;
+        playersInfoDiv.innerHTML = '';
+        return;
+    }
+
     const currentPlayer = game.getCurrentPlayer();
     if (currentPlayer) {
         currentPlayerSpan.textContent = `Giocatore corrente: ${currentPlayer.name}`;
