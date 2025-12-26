@@ -155,8 +155,8 @@ let isHost = false;
 // Multiplayer functions
 function initializeFirebase() {
     if (firebaseConfig.apiKey !== "your-api-key") {
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        const app = window.firebase.initializeApp(firebaseConfig);
+        const database = window.firebase.getDatabase(app);
         return database;
     }
     return null;
@@ -364,7 +364,11 @@ endTurnBtn.addEventListener('click', () => {
 // UI update functions
 function updateUI() {
     const currentPlayer = game.getCurrentPlayer();
-    currentPlayerSpan.textContent = `Giocatore corrente: ${currentPlayer.name}`;
+    if (currentPlayer) {
+        currentPlayerSpan.textContent = `Giocatore corrente: ${currentPlayer.name}`;
+    } else {
+        currentPlayerSpan.textContent = `Giocatore corrente: Nessuno`;
+    }
     updatePlayersInfo();
 }
 
