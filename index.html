@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Monopoly</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Digital Monopoly</h1>
+            <div id="game-setup" style="display: block;">
+                <input type="text" id="player-name" placeholder="Nome giocatore" value="Giocatore">
+                <input type="text" id="room-id" placeholder="ID Stanza (lascia vuoto per nuova)">
+                <button id="join-game">Unisciti alla Partita</button>
+            </div>
+            <div id="game-info" style="display: none;">
+                <span id="current-player">Giocatore corrente: Nessuno</span>
+                <span id="dice-result">Dadi: -</span>
+                <span id="room-info"></span>
+            </div>
+        </header>
+        <main>
+            <div id="board-container">
+                <canvas id="board" width="600" height="600"></canvas>
+            </div>
+            <div id="game-controls">
+                <button id="roll-dice">Lancia i Dadi</button>
+                <button id="buy-property">Compra Proprietà</button>
+                <button id="pay-rent">Paga Affitto</button>
+                <button id="end-turn">Fine Turno</button>
+            </div>
+            <div id="players-info">
+                <!-- Player info will be populated here -->
+            </div>
+            <div id="cards">
+                <!-- Chance/Community Chest cards will be shown here -->
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
