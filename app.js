@@ -464,31 +464,33 @@ function updateBoard() {
     ctx.fillText('DIGITAL', size / 2, size / 2 + 10);
 
     // Draw players on their positions
-    game.players.forEach((player, index) => {
-        let x, y;
-        const i = player.position;
-        if (i < 10) {
-            x = (9 - i) * squareSize + margin + squareSize / 2;
-            y = size - squareSize - margin + squareSize / 2;
-        } else if (i < 20) {
-            x = margin + squareSize / 2;
-            y = size - squareSize - margin - (i - 9) * squareSize + squareSize / 2;
-        } else if (i < 30) {
-            x = margin + (i - 19) * squareSize + squareSize / 2;
-            y = margin + squareSize / 2;
-        } else {
-            x = size - squareSize - margin + squareSize / 2;
-            y = margin + (i - 29) * squareSize + squareSize / 2;
-        }
+    if (game.players.length > 0) {
+        game.players.forEach((player, index) => {
+            let x, y;
+            const i = player.position;
+            if (i < 10) {
+                x = (9 - i) * squareSize + margin + squareSize / 2;
+                y = size - squareSize - margin + squareSize / 2;
+            } else if (i < 20) {
+                x = margin + squareSize / 2;
+                y = size - squareSize - margin - (i - 9) * squareSize + squareSize / 2;
+            } else if (i < 30) {
+                x = margin + (i - 19) * squareSize + squareSize / 2;
+                y = margin + squareSize / 2;
+            } else {
+                x = size - squareSize - margin + squareSize / 2;
+                y = margin + (i - 29) * squareSize + squareSize / 2;
+            }
 
-        ctx.fillStyle = player.color;
-        ctx.beginPath();
-        ctx.arc(x + (index - 1) * 8, y + (index - 1) * 8, 8, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.strokeStyle = '#FFFFFF';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-    });
+            ctx.fillStyle = player.color;
+            ctx.beginPath();
+            ctx.arc(x + (index - 1) * 8, y + (index - 1) * 8, 8, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        });
+    }
 }
 
 // Initialize
