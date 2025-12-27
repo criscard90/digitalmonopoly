@@ -426,6 +426,8 @@ function updateBoard() {
 
         const square = game.board[i];
 
+        if (!square) continue; // Skip if square doesn't exist
+
         // Draw square background
         ctx.fillStyle = square.color || '#FFFFFF';
         ctx.fillRect(x, y, squareSize, squareSize);
@@ -439,7 +441,7 @@ function updateBoard() {
         ctx.textAlign = 'center';
         const words = square.name.split(' ');
         words.forEach((word, index) => {
-            ctx.fillText(word.substring(0, 8), x + squareSize / 2, y + 15 + index * 12);
+            ctx.fillText(words[index].substring(0, 8), x + squareSize / 2, y + 15 + index * 12);
         });
 
         // Draw owner indicator
